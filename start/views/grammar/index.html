@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<div id="app">
+    <h3>1.文本</h3>
+    <span>Message:{{msg}}</span>
+    <br>
+    <span v-once>这个将不会改变：{{msg}}</span>
+
+    <h3>2.原始Html</h3>
+    <p>Using mustaches:{{rawHtml}}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+    <h3>3.特性</h3>
+    <div v-bind:id="dynamicId">box,使用开发者工具查看ID</div>
+    <button v-bind:disabled="disabled">Button</button>
+
+    <h3>4.使用 JavaScript 表达式</h3>
+    <div>{{'append-'+dynamicId}}</div>
+</div>
+</body>
+<script src="../../js/grammar/index.js"></script>
+</html>

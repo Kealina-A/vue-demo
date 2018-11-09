@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<h3>1.数据绑定</h3>
+<div id="app">
+    {{message}}
+</div>
+
+<h3>2.v-bind的使用</h3>
+<div id="app-2">
+    <span v-bind:title="message">
+        悬浮在我上头看看变化!
+    </span>
+</div>
+
+<h3>3.v-if的使用</h3>
+<div id="app-3">
+    <p v-if="seen">现有你看到我了</p>
+</div>
+
+<h3>4.v-for的使用</h3>
+<div id="app-4">
+    <ol>
+        <li v-for="fruit in fruits">
+            {{fruit.text}}
+        </li>
+    </ol>
+</div>
+
+<h3>5.v-on的使用</h3>
+<div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+
+<h3>6.v-model的使用</h3>
+<div id="app-6">
+    <p>{{message}}</p>
+    <input type="text" v-model="message">
+</div>
+
+<h3>7.vue组件</h3>
+<div id="app-7">
+    <ol>
+        <todo-item v-for="item in groceryList"
+                   v-bind:todo="item" v-bind:key="item.id"></todo-item>
+    </ol>
+    <test></test>
+</div>
+
+
+
+</body>
+<script src="../../js/instance/index.js"></script>
+</html>

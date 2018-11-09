@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class 与 Style 绑定</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<div id="app1">
+    <h3>1.对象语法</h3>
+    <div v-bind:class="{ active:isActive}">aa</div>
+    <div class="static" v-bind:class="{active:isActive,'text-danger':hasError}">bb</div>
+    <div v-bind:class="classObject">cc</div>
+</div>
+
+
+<div id="app2">
+    <h3>2.数组语法</h3>
+    <div v-bind:class="[activeClass,errorClass]">数组形式</div>
+    <div v-bind:class="[isActive?activeClass:'',errorClass]">三元表达式</div>
+    <div v-bind:class="[{active:isActive},errorClass]">数组语法中使用对象</div>
+
+    <h3>3.在组件上使用</h3>
+    <my-component class="baz boo"></my-component>
+    <my-component v-bind:class="{active:isActive}"></my-component>
+
+
+    <h3>4.绑定内联样式</h3>
+    <div v-bind:style="styleObject">ee</div>
+
+    <h3>5.样式数组语法</h3>
+    <div v-bind:style="[baseStyle,overridingStyle]">ff</div>
+</div>
+
+
+
+<div >
+</div>
+</body>
+<script src="../../js/bindInClassAndStyle/index.js"></script>
+</html>

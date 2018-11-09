@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<div id="app1">
+    <h3>1.v-for</h3>
+    <ul>
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+    </ul>
+    <ul>
+        <li v-for="(item,index) in items">
+            {{index}} - {{item.message}}
+        </li>
+    </ul>
+
+    <h3>2.一个对象的 v-for</h3>
+    <ul class="demo">
+        <li v-for="value in object">
+            {{value}}
+        </li>
+    </ul>
+
+    <ul class="demo">
+        <li v-for="(value,key) in object">
+            {{key}} : {{value}}
+        </li>
+    </ul>
+
+    <ul class="demo">
+        <li v-for="(value,key,index) in object">
+            {{index}}. {{key}} : {{value}}
+        </li>
+    </ul>
+
+    <div v-for="item in items" :key="item.id">
+        {{item.id}} - {{item.message}}
+    </div>
+
+    <h3>3.数组更新检测</h3>
+    <ul>
+        <li>push()</li>
+        <li>shift()</li>
+        <li>unshift()</li>
+        <li>splice()</li>
+        <li>sort()</li>
+        <li>reverse()</li>
+    </ul>
+
+    <h3>4.显示过滤/排序结果</h3>
+    <li v-for="n in evenNumbers">{{n}}</li>
+
+    <li v-for="n in even(numbers)">{{n}}</li>
+
+    <h3>5.一段取值范围的v-for</h3>
+    <div>
+        <span v-for="n in 10">{{n}}</span>
+    </div>
+
+    <h3>6. v-for on a template</h3>
+    <ul>
+        <template v-for="item in items">
+            <li>{{item.message}}</li>
+            <li class="divider" role="presentation"></li>
+        </template>
+    </ul>
+
+    <h3>7. v-for with v-if</h3>
+    <li v-for="todo in todos" v-if="!todo.isComplete">
+        {{todo}}
+    </li>
+
+    <ul v-if="todos.length">
+        <li v-for="todo in todos">
+            {{todo}}
+        </li>
+    </ul>
+    <p v-else>
+        No todos left!
+    </p>
+</div>
+
+<h3>8.一个组件里的v-for</h3>
+<div id="todo-list-example">
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
+        <button>Add</button>
+    </form>
+    <ul>
+        <todo-item v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title" v-on:remove="todos.splice(index, 1)"></todo-item>
+    </ul>
+</div>
+</body>
+<script src="../../js/listRender/index.js"></script>
+</html>

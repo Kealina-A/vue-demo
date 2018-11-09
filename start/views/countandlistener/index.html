@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算熟悉和侦听器</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+<h3>1.计算属性</h3>
+<div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+<h3>2.计算属性的 setter getter 方法</h3>
+<div id="demo">
+    {{fullName}}
+</div>
+
+<h3>3.侦听器</h3>
+<div id="watch-example">
+    <select v-model="choose">
+        <option v-for="fruit in fruits">{{fruit}}</option>
+    </select>
+</div>
+
+</body>
+<script src="../../js/countandListener/index.js"></script>
+</html>

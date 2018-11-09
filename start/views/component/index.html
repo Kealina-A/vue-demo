@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件基础</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+    }
+    .tab-button:hover {
+        background: #e0e0e0;
+    }
+    .tab-button.active {
+        background: #e0e0e0;
+    }
+    .tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+</style>
+<body>
+<div id="components-demo">
+    <h3>1.初识组件和利用组件</h3>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+
+    <h3>2.prop属性</h3>
+    <blog-post title="My journey with Vue"></blog-post>
+
+    <h3>3.通过 Prop 向子组件传递数据</h3>
+    <blog-post v-for="post in posts" v-bind:key="post.id" v-bind:title="post.title"></blog-post>
+
+    <h3>4.单个根元素</h3>
+    <blog-post1 v-for="post in posts1" v-bind:post="post"></blog-post1>
+</div>
+<div id="blog-posts-events-demo">
+    <h3>5.通过事件向父级组件发送消息</h3>
+    <div :style="{fontSize:size+'em'}">
+        <blog-post2 v-on:enlarge-text="size+=0.1" v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post2>
+    </div>
+
+    <h3>6.使用事件抛出一个值</h3>
+    <div :style="{fontSize:size+'em'}">
+        <blog-post3 v-on:enlarge-text="size+=$event" v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></blog-post3>
+    </div>
+
+    <h3>7.组件上的v-model</h3>
+    <custom-input v-model="searchText"></custom-input>
+    <p>searchText:{{searchText}}</p>
+
+    <h3>8.通过插槽分发内容</h3>
+    <alert-box>
+        Something bad happened!
+    </alert-box>
+
+    <h3>9.动态组件</h3>
+    <button
+            v-for="tab in tabs"
+            v-bind:key="tab"
+            v-bind:class="['tab-button', { active: currentTab === tab }]"
+            v-on:click="currentTab = tab">{{ tab }}</button>
+
+    <component
+            v-bind:is="currentTabComponent"
+            class="tab"
+    ></component>
+</div>
+</body>
+<script src="../../js/component/index.js"></script>
+</html>
